@@ -26,7 +26,7 @@ jobs:
         with:
           source_file: "typeDefs.js"
           destination_repo: "JoshIri360/graphql-service-a"
-          destination_folder: "."
+          destination_folder: "./"
           user_email: "aidelojejoshua@gmail.com"
           user_name: "Aideloje Joshua"
           commit_message: "A custom message for the commit"
