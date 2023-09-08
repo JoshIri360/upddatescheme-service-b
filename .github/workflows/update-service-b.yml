@@ -22,7 +22,7 @@ jobs:
       - name: Push a file to another repository
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: "typeDefs.js"
           destination_repo: "JoshIri360/graphql-service-a"
