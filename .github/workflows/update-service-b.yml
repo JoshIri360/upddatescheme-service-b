@@ -1,0 +1,44 @@
+name: Update Service A
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-service-a:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update Type Definitions and Schema Models
+        run: |
+          TYPEDEFS_FILE="./typeDefs.js"
+          USER_MODEL_FILE="./UserModel.js"
+          
+          # Replace with the API endpoint of Service A where the type definitions and schema models are updated
+          SERVICE_A_API="http://localhost:4000/update-schema"
+
+          # Fetch the latest type definitions and schema models
+          TYPEDEFS_CONTENT=$(cat $TYPEDEFS_FILE)
+          USER_MODEL_CONTENT=$(cat $USER_MODEL_FILE)
+
+          # Send a POST request to update the definitions in Service A
+          curl -X POST $SERVICE_A_API \
+            -H "Content-Type: application/json" \
+            -d '{
+              "typeDefs": "'"$TYPEDEFS_CONTENT"'",
+              "userModel": "'"$USER_MODEL_CONTENT"'"
+            }'
+        env:
+          NODE_OPTIONS: --unhandled-rejections=strict
