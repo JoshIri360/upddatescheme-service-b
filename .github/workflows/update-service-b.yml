@@ -13,11 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Copy typeDefs and UserModel to Service A
-        run: |
-          cp typeDefs.js ../graphql-service-a/typeDefs.js
-          cp UserModel.js ../graphql-service-a/UserModel.js
-        working-directory: . 
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          source_file: 'typeDefs.js'
+          destination_repo: 'JoshIri360/graphql-service-a'
+          destination_folder: '.'
+          user_email: 'aidelojejoshua@gmail.com'
+          user_name: 'aidelojejoshu'
+          commit_message: 'A custom message for the commit' 
 
       - name: Push changes to Service A
         run: |
