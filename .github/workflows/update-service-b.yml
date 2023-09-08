@@ -22,15 +22,15 @@ jobs:
           destination_repo: 'JoshIri360/graphql-service-a'
           destination_folder: '.'
           user_email: 'aidelojejoshua@gmail.com'
-          user_name: 'aidelojejoshu'
+          user_name: 'aidelojejoshua'
           commit_message: 'A custom message for the commit' 
 
-      - name: Push changes to Service A
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add ../graphql-service-a/typeDefs.js ../graphql-service-a/UserModel.js
-          git commit -m "Update typeDefs and UserModel"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Push changes to Service A
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git add ../graphql-service-a/typeDefs.js ../graphql-service-a/UserModel.js
+      #     git commit -m "Update typeDefs and UserModel"
+      #     git push
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
