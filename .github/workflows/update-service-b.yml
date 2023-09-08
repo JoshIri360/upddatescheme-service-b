@@ -19,23 +19,14 @@ jobs:
           git config user.name "Aideloje Joshua"
         working-directory: .
 
-      - name: Clone target repository
-        run: |
-          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/JoshIri360/graphql-service-a target
-          rm -rf *
-        working-directory: .
-
-      - name: Copy typeDefs and UserModel to Service A
-        run: |
-          cp typeDefs.js target
-          cp UserModel.js target
-        working-directory: ./ # Change to the directory where typeDefs.js and UserModel.js are located
-
-      - name: Commit and push changes to Service A
-        run: |
-          cd target
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Automatic publish from GitHub Actions"
-          git push target master
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          source_file: "typeDefs.js"
+          destination_repo: "JoshIri360/graphql-service-a"
+          destination_folder: "."
+          user_email: "aidelojejoshua@gmail.com"
+          user_name: "Aideloje Joshua"
+          commit_message: "A custom message for the commit"
