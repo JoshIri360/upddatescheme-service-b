@@ -21,8 +21,8 @@ jobs:
 
       - name: Clone target repository
         run: |
-          git clone https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/JoshIri360/graphql-service-a target
-          rm -rf target/.git # Remove everything but the .git directory
+          git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/JoshIri360/graphql-service-a target
+          rm -rf *
         working-directory: .
 
       - name: Copy typeDefs and UserModel to Service A
