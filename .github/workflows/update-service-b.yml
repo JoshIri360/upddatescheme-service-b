@@ -19,7 +19,7 @@ jobs:
           git config user.name "JoshIri360"
         working-directory: .
 
-      - name: Push a file to another repository
+      - name: Push type definition
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -29,4 +29,16 @@ jobs:
           destination_folder: "./"
           user_email: "aidelojejoshua@gmail.com"
           user_name: "JoshIri360"
-          commit_message: "A custom message for the commit"
+          commit_message: "Added Type Definition File"
+
+      - name: Push mongodb schema
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: "UserModel.js"
+          destination_repo: "JoshIri360/graphql-service-a"
+          destination_folder: "./"
+          user_email: "aidelojejoshua@gmail.com"
+          user_name: "JoshIri360"
+          commit_message: "Added MongoDB Schema File"
