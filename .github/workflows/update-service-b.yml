@@ -28,5 +28,5 @@ jobs:
           destination_repo: "JoshIri360/graphql-service-a"
           destination_folder: "./"
           user_email: "aidelojejoshua@gmail.com"
-          user_name: "Aideloje Joshua"
+          user_name: "JoshIri360"
           commit_message: "A custom message for the commit"
