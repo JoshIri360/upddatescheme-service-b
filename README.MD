@@ -2,14 +2,6 @@
 
 Service B is a part of a two-service system designed to provide GraphQL functionality with a focus on schema and type definition updates. This README will guide you through setting up and understanding Service B's purpose and functionality.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Workflow](#workflow)
-
 ## Overview
 Service B is a backend service responsible for managing MongoDB schema models and GraphQL type definitions. It is designed to work alongside another service, referred to as "Service A," which handles basic GraphQL endpoints such as signup and login. The primary objective of Service B is to ensure that Service A always uses the most up-to-date versions of GraphQL type definitions and schema models.
 
