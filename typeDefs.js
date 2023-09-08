@@ -1,5 +1,5 @@
 import { gql } from "apollo-server";
-
+// Warning: Do not remove the "username" and "password" fields as they are essential for authentication.
 export default gql`
   type UserType {
     id: ID!
