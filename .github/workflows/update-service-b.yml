@@ -16,7 +16,7 @@ jobs:
       - name: Set Git user
         run: |
           git config user.email "aidelojejoshua@gmail.com"
-          git config user.name "Aideloje Joshua"
+          git config user.name "JoshIri360"
         working-directory: .
 
       - name: Push a file to another repository
