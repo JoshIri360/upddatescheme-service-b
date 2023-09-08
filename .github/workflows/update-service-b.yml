@@ -3,7 +3,7 @@ name: Update Service A
 on:
   push:
     branches:
-      - main
+      - main # Change this to your main branch name if it's different
 
 jobs:
   update-service-a:
@@ -13,32 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Update Type Definitions and Schema Models
+      - name: Copy typeDefs and UserModel to Service A
         run: |
-          TYPEDEFS_FILE="./typeDefs.js"
-          USER_MODEL_FILE="./UserModel.js"
-          
-          # Replace with the API endpoint of Service A where the type definitions and schema models are updated
-          SERVICE_A_API="http://localhost:4000/update-schema"
+          cp typeDefs.js ../graphql-service-a/typeDefs.js
+          cp UserModel.js ../graphql-service-a/UserModel.js
+        working-directory: service-b-directory # Change to the directory where typeDefs.js and UserModel.js are located
 
-          # Fetch the latest type definitions and schema models
-          TYPEDEFS_CONTENT=$(cat $TYPEDEFS_FILE)
-          USER_MODEL_CONTENT=$(cat $USER_MODEL_FILE)
-
-          # Send a POST request to update the definitions in Service A
-          curl -X POST $SERVICE_A_API \
-            -H "Content-Type: application/json" \
-            -d '{
-              "typeDefs": "'"$TYPEDEFS_CONTENT"'",
-              "userModel": "'"$USER_MODEL_CONTENT"'"
-            }'
+      - name: Push changes to Service A
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add ../graphql-service-a/typeDefs.js ../graphql-service-a/UserModel.js
+          git commit -m "Update typeDefs and UserModel"
+          git push
         env:
-          NODE_OPTIONS: --unhandled-rejections=strict
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
